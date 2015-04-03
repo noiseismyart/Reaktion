@@ -21,6 +21,11 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using UnityEngine;
+using UniOSC;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+//using Reaktion;
 
 namespace Reaktion {
 
@@ -29,13 +34,25 @@ namespace Reaktion {
 public class Remote
 {
     // Control source type.
-    public enum Control { Off, MidiKnob, MidiNote, InputAxis }
+    public enum Control { Off, MidiKnob, MidiNote, InputAxis, OSCValue, Float }
     [SerializeField] Control _control = Control.Off;
 
     // MIDI settings.
     [SerializeField] MidiChannel _midiChannel = MidiChannel.All;
     [SerializeField] int _knobIndex = 2;
     [SerializeField] int _noteNumber = 40;
+
+	// OSC settings.
+	[SerializeField] string _oscaddress = ""; 
+	[SerializeField] float _oscvalue = 0.0f;
+	[SerializeField] bool _oscenabled = false;
+
+	//UniOSCReaktionManager manager;
+
+	//UniOSCFloat oscFloat = new UniOSCFloat ();
+	
+	// Float Settings
+		[SerializeField] float _floatvalue = 0.0f;
 
     // Joystick input settings.
     [SerializeField] string _inputAxis = "Jump";
@@ -56,6 +73,12 @@ public class Remote
         Update();
     }
 
+	public void Awake()
+	{
+			//oscFloat = new UniOSCFloat (_oscaddress, _oscvalue);
+			//manager.AddOSCAddress (oscFloat);			
+	}
+
     public void Update()
     {
         if (_control == Control.Off)
@@ -70,6 +93,17 @@ public class Remote
         {
             _level = MidiJack.GetKey(_midiChannel, _noteNumber);
         }
+		else if (_control == Control.OSCValue)
+		{
+				if(_oscenabled)
+					_oscvalue = _oscvalue;
+
+				_level = _oscvalue;
+		}
+		else if (_control == Control.Float)
+		{
+				_level = _floatvalue;
+		}
         else // _control == Control.InputAxis
         {
             if (string.IsNullOrEmpty(_inputAxis))

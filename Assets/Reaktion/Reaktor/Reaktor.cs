@@ -35,7 +35,7 @@ public class Reaktor : MonoBehaviour
     // Remote control settings.
     public Remote gain;
     public Remote offset;
-
+	
     // General options.
     public float sensitivity = 0.95f;
     public float decaySpeed = 0.5f;
@@ -46,6 +46,7 @@ public class Reaktor : MonoBehaviour
     public float dynamicRange = 17.0f;
     public float lowerBound = -60.0f;
     public float falldown = 0.5f;
+	public bool useOSCInput = false;
 
     // Output properties.
     public float Output   { get { return output; } }
@@ -99,33 +100,44 @@ public class Reaktor : MonoBehaviour
 
         // Audio input.
         rawInput = injector.DbLevel;
+		
+		//Check if input is OSC
 
-        // Check the peak level.
-        peak -= Time.deltaTime * falldown;
-        peak = Mathf.Max(peak, Mathf.Max(rawInput, lowerBound + dynamicRange + headroom));
+		if (useOSCInput) 
+		{
+				//peak = 0.0f;
+
+				output = rawInput;
+		} 
+
+		else 
+		{
+			// Check the peak level.
+			peak -= Time.deltaTime * falldown;
+			peak = Mathf.Max (peak, Mathf.Max (rawInput, lowerBound + dynamicRange + headroom));
         
-        // Normalize the input level.
-        input = (rawInput - peak + headroom + dynamicRange) / dynamicRange;
-        input = audioCurve.Evaluate(Mathf.Clamp01(input));
+			// Normalize the input level.
+			input = (rawInput - peak + headroom + dynamicRange) / dynamicRange;
+			input = audioCurve.Evaluate (Mathf.Clamp01 (input));
 
-        // Remote controls.
-        gain.Update();
-        offset.Update();
+			// Remote controls.
+			gain.Update ();
+			offset.Update ();
 
-        input *= gain.level;
-        input += offset.level;
+			input *= gain.level;
+			input += offset.level;
 
-        // Make output.
-        input = Mathf.Clamp01(fakeInput < 0.0f ? input : fakeInput);
+			// Make output.
+			input = Mathf.Clamp01 (fakeInput < 0.0f ? input : fakeInput);
 
-        if (sensitivity < 1.0f)
-        {
-            var coeff = Mathf.Pow(sensitivity, 2.3f) * -128;
-            input -= (input - output) * Mathf.Exp(coeff * Time.deltaTime);
-        }
+			if (sensitivity < 1.0f) {
+				var coeff = Mathf.Pow (sensitivity, 2.3f) * -128;
+				input -= (input - output) * Mathf.Exp (coeff * Time.deltaTime);
+			}
 
-        var speed = decaySpeed < 1.0f ? decaySpeed * 10 + 0.5f : 100.0f;
-        output = Mathf.Max(input, output - Time.deltaTime * speed);
+			var speed = decaySpeed < 1.0f ? decaySpeed * 10 + 0.5f : 100.0f;
+			output = Mathf.Max (input, output - Time.deltaTime * speed);
+		}
     }
 
     void OnEnable()

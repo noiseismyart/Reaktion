@@ -43,6 +43,7 @@ public class ReaktorEditor : Editor
 
     // Audio input options.
     SerializedProperty propShowAudioOptions;
+	SerializedProperty propOSCInputAudio;
     SerializedProperty propHeadroom;
     SerializedProperty propDynamicRange;
     SerializedProperty propLowerBound;
@@ -55,6 +56,7 @@ public class ReaktorEditor : Editor
     {
         // Audio input settings.
         propInjector         = serializedObject.FindProperty("injector");
+		propOSCInputAudio    = serializedObject.FindProperty("useOSCInput");
         propAudioCurve       = serializedObject.FindProperty("audioCurve");
 
         // Remote controls.
@@ -91,6 +93,7 @@ public class ReaktorEditor : Editor
 
         // Audio input settings.
         EditorGUILayout.PropertyField(propInjector);
+		EditorGUILayout.PropertyField(propOSCInputAudio, new GUIContent("OSC Osc For Audio Level"));
         EditorGUILayout.PropertyField(propAudioCurve, new GUIContent("Amplitude Curve"));
 
         // Remote controls.

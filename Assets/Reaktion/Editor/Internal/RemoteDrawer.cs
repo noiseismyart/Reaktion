@@ -34,9 +34,12 @@ class RemoteDrawer : PropertyDrawer
         new GUIContent("Off"),
         new GUIContent("MIDI CC"),
         new GUIContent("MIDI Note"),
-        new GUIContent("Input Axis")
+        new GUIContent("Input Axis"),
+		new GUIContent("OSC Value"),
+		new GUIContent("Float Value")
+		
     };
-    static int[] controlValues = { 0, 1, 2, 3 };
+    static int[] controlValues = { 0, 1, 2, 3, 4, 5 };
 
     int GetRowCount(SerializedProperty property)
     {
@@ -48,6 +51,10 @@ class RemoteDrawer : PropertyDrawer
         var control = (Remote.Control)propControl.intValue;
         if (control == Remote.Control.MidiKnob ||
             control == Remote.Control.MidiNote) return 4;
+
+		if (control == Remote.Control.OSCValue)
+			return 6;
+
 
         // Expand if it's enabled.
         return control > 0 ? 3 : 1;
@@ -102,12 +109,33 @@ class RemoteDrawer : PropertyDrawer
             position.y += nextLine;
         }
 
+		// OSC Values
+		if (propControl.hasMultipleDifferentValues || control == Remote.Control.OSCValue)
+		{
+			EditorGUI.PropertyField(position, property.FindPropertyRelative("_oscenabled"), new GUIContent("OSC Inc Enabled"));
+			position.y += nextLine;
+			EditorGUI.PropertyField(position, property.FindPropertyRelative("_oscaddress"), new GUIContent("OSC Address"));
+			position.y += nextLine;
+			EditorGUI.PropertyField(position, property.FindPropertyRelative("_oscvalue"), new GUIContent("OSC Value"));
+			position.y += nextLine;
+		}
+
+		// Float Value
+		if (propControl.hasMultipleDifferentValues || control == Remote.Control.Float)
+		{
+			EditorGUI.PropertyField(position, property.FindPropertyRelative("_floatvalue"), new GUIContent("Float Value"));
+			position.y += nextLine;
+		}
+
         // Input axis name box.
         if (propControl.hasMultipleDifferentValues || control == Remote.Control.InputAxis)
         {
             EditorGUI.PropertyField(position, property.FindPropertyRelative("_inputAxis"));
             position.y += nextLine;
         }
+
+
+
 
         // Curve editor.
         if (propControl.hasMultipleDifferentValues || control != Remote.Control.Off)
