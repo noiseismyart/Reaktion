@@ -32,14 +32,17 @@ public class OSCInjector : InjectorBase
 	public string OSCAddress = "";
 	public bool OSCenabled = false;
 	public bool OSCSmoothing = false;
-	public float OSCSmoothingAmt = 1.0f;
+	public float OSCSmoothingAmt = 0.01f;
+	public float SmoothVelocity = 0.0f;
 	public bool OSCValueCurve = false;
 
 	public string Address { get { return OSCAddress; } }
 
+	//private string SmoothingAddress = OSCAddress + "/Smoothing";//OSC Adjustable Smoothing in the Future 
+
 	public float Value { get { return OSCvalue; } set { OSCvalue = value; } }
-		
-	[SerializeField] AnimationCurve _curve = AnimationCurve.Linear(0, 0, 1, 1);
+
+	public bool On { get { return OSCenabled; } set { OSCenabled = value; } }
 
 	public float bpm = 120;
 	public AnimationCurve curve = AnimationCurve.Linear(0, 1, 0.5f, 0);
@@ -51,23 +54,36 @@ public class OSCInjector : InjectorBase
 	float time;
 	float tapTime;
 
+	void OnEnable()
+	{
+		useRaw = true;
+
+	}
 
     void Update()
     {
-        if (OSCenabled) // Currently does nothing - UniOSCtoReaktionManager automatically updates the value for each script - this may be changed in the future to cut off osc data in future
+        if (OSCenabled) // checks to see if INC osc is enabled. IF it is will take any incoming data - DATA that is only passed when enabled to the OSCInjector.
 		{
-				if(OSCSmoothing && OSCValueCurve)
+
+				if(OSCSmoothing && OSCValueCurve)	
 				{
+					dbLevel = Mathf.SmoothDamp(dbLevel, curve.Evaluate(OSCvalue), ref SmoothVelocity, OSCSmoothingAmt);
 				}
 				else if(OSCSmoothing)
 				{
+				if (dbLevel != OSCvalue)
+				{
+					dbLevel = Mathf.SmoothDamp(dbLevel, OSCvalue, ref SmoothVelocity, OSCSmoothingAmt);
+				}
 				}
 				else if(OSCValueCurve)
 				{
+					dbLevel = curve.Evaluate(OSCvalue);
 				}
-				//OSCvalue = ;
+				else if (dbLevel != OSCvalue)
+					dbLevel = OSCvalue;
 		}
-
+		
 		//if (tapNote >= 0)
 		//	if (MidiJack.GetKeyDown(tapChannel, tapNote))
 		//		Tap();
@@ -81,8 +97,7 @@ public class OSCInjector : InjectorBase
 		//time = (time + Time.deltaTime) % interval;
 		
 		//dbLevel = (curve.Evaluate(time / interval) - 1) * 18;
-		if (dbLevel != OSCvalue)
-			dbLevel = OSCvalue;
+	
 		//dbLevel = 0.0f;
 	}
 

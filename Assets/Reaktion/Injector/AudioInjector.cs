@@ -37,6 +37,11 @@ public class AudioInjector : InjectorBase
     float squareSum;
     int sampleCount;
 
+	void OnEnable()
+	{
+		useRaw = false;
+	}
+
     void Update()
     {
         if (sampleCount < 1) return;

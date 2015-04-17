@@ -46,7 +46,7 @@ public class Reaktor : MonoBehaviour
     public float dynamicRange = 17.0f;
     public float lowerBound = -60.0f;
     public float falldown = 0.5f;
-	public bool useOSCInput = false;
+	public bool useOSCInput = true;
 
     // Output properties.
     public float Output   { get { return output; } }
@@ -101,9 +101,8 @@ public class Reaktor : MonoBehaviour
         // Audio input.
         rawInput = injector.DbLevel;
 		
-		//Check if input is OSC
-
-		if (useOSCInput) 
+		//Check if input is OSC and if so just use the raw value;
+		if (injector.useRaw) 
 		{
 				//peak = 0.0f;
 

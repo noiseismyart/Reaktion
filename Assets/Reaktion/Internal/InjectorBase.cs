@@ -28,11 +28,16 @@ namespace Reaktion {
 public class InjectorBase : MonoBehaviour
 {
     protected float dbLevel;
+	protected bool useRaw;
 
     public float DbLevel
     {
         get { return dbLevel; }
     }
+	public bool UseRaw
+	{
+		get { return useRaw; }
+	}
 }
 
 } // namespace Reaktion

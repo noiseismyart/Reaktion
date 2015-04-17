@@ -93,7 +93,6 @@ public class ReaktorEditor : Editor
 
         // Audio input settings.
         EditorGUILayout.PropertyField(propInjector);
-		EditorGUILayout.PropertyField(propOSCInputAudio, new GUIContent("OSC Osc For Audio Level"));
         EditorGUILayout.PropertyField(propAudioCurve, new GUIContent("Amplitude Curve"));
 
         // Remote controls.

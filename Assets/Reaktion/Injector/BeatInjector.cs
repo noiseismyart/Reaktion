@@ -38,6 +38,11 @@ public class BeatInjector : InjectorBase
     float time;
     float tapTime;
 
+	void OnEnable()
+	{
+		useRaw = false;
+	}
+
     void Update()
     {
         if (tapNote >= 0)

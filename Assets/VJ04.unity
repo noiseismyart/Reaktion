@@ -312,39 +312,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Ghost
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -565,25 +551,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Pivot2
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
-  OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
+  OSCValueCurve: 1
   bpm: 120
   curve:
     serializedVersion: 2
@@ -591,11 +563,11 @@ MonoBehaviour:
     - time: 0
       value: 1
       inSlope: 0
-      outSlope: -2
+      outSlope: 0
       tangentMode: 0
-    - time: .5
-      value: 0
-      inSlope: -2
+    - time: 1
+      value: 1
+      inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
@@ -937,39 +909,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Shake
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -1207,10 +1165,9 @@ GameObject:
   - 114: {fileID: 185536897}
   - 114: {fileID: 185536903}
   - 114: {fileID: 185536901}
-  - 114: {fileID: 185536905}
   - 114: {fileID: 185536904}
-  - 114: {fileID: 185536907}
   - 114: {fileID: 185536906}
+  - 114: {fileID: 185536905}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1264,11 +1221,11 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: 3
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_HDR: 0
-  m_OcclusionCulling: 0
+  m_HDR: 1
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
 --- !u!4 &185536896
@@ -1557,10 +1514,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 185536891}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8313647243af146dab989a31c1f04de1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syphonClients: []
+  nullTexture: {fileID: 0}
+--- !u!114 &185536905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 185536891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07df6674c17984b8fb3f457115b682f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &185536905
+--- !u!114 &185536906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1571,31 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a30237ba81d49b691c092d951a1230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaOneMat: {fileID: 0}
---- !u!114 &185536906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 185536891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8313647243af146dab989a31c1f04de1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syphonClients: []
-  nullTexture: {fileID: 0}
---- !u!114 &185536907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 185536891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a970acddb8696a4792ca6e022840a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  alphaOneMat: {fileID: 2100000, guid: fe1d24430150e4b91acf91e61e93a083, type: 2}
 --- !u!1 &188266440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,39 +1740,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/ContourHue
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -2035,39 +1967,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Streamline/Color
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -2271,39 +2189,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/ContourIntensity
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -2507,39 +2411,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Bubble
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -2837,39 +2727,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Glitch
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -3440,39 +3316,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Slice
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -3645,39 +3507,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /CameraSelect2
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -3975,39 +3823,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Rocks/Throttle
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -4254,39 +4088,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Invert
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -4572,39 +4392,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /TimeScale
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -4853,39 +4659,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/Bump
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: 3
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -5118,39 +4910,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /CameraSelect0
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -5504,39 +5282,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /CameraSelect1
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -5673,39 +5437,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/FOV
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -5976,39 +5726,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/Radius
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: 3
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -6212,39 +5948,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Scan
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -6509,39 +6231,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/Slice
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -6737,7 +6445,7 @@ MonoBehaviour:
   receiveAllAddresses: 0
   useExplicitConnection: 0
   explicitConnection: {fileID: 0}
-  oscPort: 4420
+  oscPort: 8666
   receiveAllPorts: 0
   _oscAddresses:
   - /Ghost
@@ -6779,7 +6487,6 @@ MonoBehaviour:
   - /Camera1/Edge
   _redrawFlag: 0
   _foldoutList: []
-  oscFader1: 
 --- !u!114 &897001469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6792,12 +6499,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoConnectOSCIn: 1
-  oscPort: 4420
+  oscPort: 8666
   oscOut: 1
   autoConnectOSCOut: 1
   foldoutOSCOut: 1
   foldoutOSCIn: 1
-  oscOutIPAddress: 192.168.0.111
+  oscOutIPAddress: 
   oscOutPort: 9000
   redrawFlag: 0
   dispatchOSC: 0
@@ -7085,39 +6792,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Whiteout
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -7565,39 +7258,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Streamline/Tail
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -7888,39 +7567,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/Warp
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -8353,39 +8018,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Slide
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -8621,39 +8272,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/WireAmp
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -8867,7 +8504,7 @@ MonoBehaviour:
   gradient:
     key0:
       serializedVersion: 2
-      rgba: 4281281320
+      rgba: 4294967295
     key1:
       serializedVersion: 2
       rgba: 4294967295
@@ -8920,39 +8557,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Fog
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -9199,39 +8822,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Illuminate
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -9478,39 +9087,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Confetti/Throttle
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -9818,37 +9413,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Pivot1
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
-  OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
+  OSCValueCurve: 1
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: .512500048
       inSlope: 0
-      outSlope: -2
+      outSlope: 0
       tangentMode: 0
-    - time: .5
-      value: 0
-      inSlope: -2
+    - time: 1
+      value: .512500048
+      inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
@@ -10384,39 +9965,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/Spin
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -10842,39 +10409,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Petals/Throttle
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -11088,39 +10641,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Tunnel/Color
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -11384,39 +10923,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /MainLight/Intensity
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -11648,39 +11173,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Frags/Throttle
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -11965,39 +11476,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /CameraSelect3
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -13347,39 +12844,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Streamline/Throttle
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -13841,39 +13324,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Confetti/Color
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1
@@ -14290,39 +13759,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OSCvalue: 0
   OSCAddress: /Camera1/Edge
-  OSCenabled: 0
-  OSCSmoothing: 0
-  OSCSmoothingAmt: 1
+  OSCenabled: 1
+  OSCSmoothing: 1
+  OSCSmoothingAmt: .300000012
+  SmoothVelocity: 0
   OSCValueCurve: 0
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-    - time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
   bpm: 120
   curve:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: -2
-      tangentMode: 0
-    - time: .5
       value: 0
-      inSlope: -2
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   tapNote: -1

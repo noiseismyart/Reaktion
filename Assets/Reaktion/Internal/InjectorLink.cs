@@ -35,6 +35,11 @@ public class InjectorLink : GenericLink<InjectorBase>
             return linkedObject ? linkedObject.DbLevel : -1e12f;
         }
     }
+	public bool useRaw {
+		get {
+			return linkedObject.UseRaw;
+		}
+	}
 }
 
 } // namespace Reaktion

@@ -47,7 +47,7 @@ public class OSCInjectionEditor : Editor
 		propOSCsmoothing = serializedObject.FindProperty("OSCSmoothing");
 		propOSCsmoothingamt = serializedObject.FindProperty("OSCSmoothingAmt");
 		propOSCcurve = serializedObject.FindProperty("OSCValueCurve");
-		propCurve = serializedObject.FindProperty("_curve");
+		propCurve = serializedObject.FindProperty("curve");
 
     }
 
