@@ -13,11 +13,6 @@ using Reaktion;
 
 
 namespace UniOSC{
-
-	/// <summary>
-	/// Rotates (localRotation) the hosting game object.
-	/// For every axis you have a separate OSC address to specify
-	/// </summary>
 	[AddComponentMenu("UniOSC/UniOSC to Reaktion")]
 	public class UniOSCtoReaktion :  UniOSCEventTarget {
 
@@ -35,6 +30,8 @@ namespace UniOSC{
 		#endregion
 
 		void Awake(){
+			
+			//Collects all components using OSC lists their address, value, and if they are enabled to receive incoming OSC
 
 			injectorArray = FindObjectsOfType (typeof(OSCInjector)) as OSCInjector[];
 			injectorList = injectorArray.ToList();
@@ -52,7 +49,7 @@ namespace UniOSC{
 
 		private void _Init(){
 			
-			//receiveAllAddresses = false;
+			//Initializes each OSC address
 			_oscAddresses.Clear();
 			if(!receiveAllAddresses){
 				foreach (OSCInjector inject in injectorList) 
@@ -66,6 +63,7 @@ namespace UniOSC{
 	
 
 		public override void OnOSCMessageReceived(UniOSCEventArgs args){
+			//Reads incoming OSC messages, compares to the OSCInjectors, feeds data to them as needed.
 		
 			if(args.Message.Data.Count <1)return;
 			if(!( args.Message.Data[0]  is  System.Single))return;
