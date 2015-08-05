@@ -24,7 +24,7 @@ using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-#if UNITY_STANDALONE_OSX && UNITY_PRO_LICENSE
+
 
 public static class Lasp
 {
@@ -38,7 +38,7 @@ public static class Lasp
     public static extern void RetrieveWaveform(uint sourceChannel, float[] buffer, uint bufferLength, uint channelCount);
 }
 
-#endif
+
 
 namespace Reaktion {
 
@@ -54,7 +54,7 @@ public class NativeAudioInput : MonoBehaviour
 
     void Awake()
     {
-#if UNITY_STANDALONE_OSX && UNITY_PRO_LICENSE
+
         var sampleRate = AudioSettings.outputSampleRate;
 
         // Create an audio source.
@@ -74,16 +74,12 @@ public class NativeAudioInput : MonoBehaviour
 
         // Estimate the latency.
         estimatedLatency = (float)bufferSize / sampleRate;
-#else
-        Debug.LogWarning("NativeAudioInput is not supported in the current configuration.");
-#endif
     }
 
     void OnAudioFilterRead(float[] data, int channels)
     {
-#if UNITY_STANDALONE_OSX && UNITY_PRO_LICENSE
-        Lasp.RetrieveWaveform((uint)channel, data, (uint)data.Length, (uint)channels);
-#endif
+       Lasp.RetrieveWaveform((uint)channel, data, (uint)data.Length, (uint)channels);
+
     }
 }
 

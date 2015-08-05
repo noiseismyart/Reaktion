@@ -29,7 +29,7 @@ public class InjectorBase : MonoBehaviour
 {
     protected float dbLevel;
 	protected bool useRaw;
-
+	
     public float DbLevel
     {
         get { return dbLevel; }

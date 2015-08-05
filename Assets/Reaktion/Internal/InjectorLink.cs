@@ -30,15 +30,17 @@ namespace Reaktion {
 public class InjectorLink : GenericLink<InjectorBase>
 {
     // Get a output dB level from the Injector.
-    public float DbLevel {
-        get {
+    
+	public float DbLevel {
+		get {
             return linkedObject ? linkedObject.DbLevel : -1e12f;
         }
     }
-	public bool useRaw {
+
+	public bool UseRaw {
 		get {
-			return linkedObject.UseRaw;
-		}
+				return linkedObject.UseRaw;
+			}
 	}
 }
 

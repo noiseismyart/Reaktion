@@ -10,82 +10,91 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using Reaktion;
+using OSCsharp.Data;
+using UniOSC;
 
-
-namespace UniOSC{
-	[AddComponentMenu("UniOSC/UniOSC to Reaktion")]
-	public class UniOSCtoReaktion :  UniOSCEventTarget {
+[AddComponentMenu("UniOSC/UniOSC to Reaktion")]
+public class UniOSCtoReaktion :  MonoBehaviour {
 
 	
-		OSCInjector injector;
-		OSCInjector[] injectorArray;
-		List<OSCInjector> injectorList;
+		UniOSCInjector injector;
+		UniOSCInjector[] injectorArray;
+		List<UniOSCInjector> injectorList;
+		public UniOSCConnection OSCConnection;
 
 
 		#region private
-
-		private float tempFloat;
-		private int tempInt;
+		private UniOSCEventTargetCBImplementation oscTarget;
 
 		#endregion
 
 		void Awake(){
-			
-			//Collects all components using OSC lists their address, value, and if they are enabled to receive incoming OSC
 
-			injectorArray = FindObjectsOfType (typeof(OSCInjector)) as OSCInjector[];
+			injectorArray = FindObjectsOfType (typeof(UniOSCInjector)) as UniOSCInjector[];
 			injectorList = injectorArray.ToList();
 
-			foreach (OSCInjector inject in injectorList) 
+			foreach (UniOSCInjector inject in injectorList) 
 			{
 				Debug.Log("Address: " + inject.Address + " Value: " + inject.Value + "Enabled" + inject.On);
 			}
+
+			oscTarget = new UniOSCEventTargetCBImplementation(OSCConnection);
+			oscTarget.OSCMessageReceived+=OnOSCMessageReceived;
 		}
 
-		public override void OnEnable(){
-			_Init();
-			base.OnEnable();
+		void OnEnable(){
+		//Debug.Log("UniOSCCodeBasedDemo.OnEnable");
+		//Just to create a OSCEventTarget isn't enough. We nedd to enable it:
+		//oscTarget.Enable();
+
+			oscTarget.Enable ();
 		}
 
-		private void _Init(){
+		void OnDisable()
+		{
+			oscTarget.Disable ();
+		}
+
+		void OnDestroy()
+		{
+			//Clean up things and release recources!!!!
+			//Otherwise our callbacks can still respond even if our GameObject with this script is destroyed/removed from the scene
+
+			oscTarget.Dispose ();
+			oscTarget = null;
+		}
+
+
+	#region callbacks
+		void OnOSCMessageReceived(object sender, UniOSCEventArgs args)
+		{
+			//Debug.Log("UniOSCCodeBasedDemo.OnOSCMessageReceived:"+ _GetAddressFromOscPacket(args));
+
+			OscMessage msg = (OscMessage)args.Packet;
+			if(msg.Data.Count <1)return;
 			
-			//Initializes each OSC address
-			_oscAddresses.Clear();
-			if(!receiveAllAddresses){
-				foreach (OSCInjector inject in injectorList) 
-				{
-					_oscAddresses.Add(inject.Address);
-				}
+			float _data = (float)msg.Data[0];
 
-			}
-
-		}
-	
-
-		public override void OnOSCMessageReceived(UniOSCEventArgs args){
-			//Reads incoming OSC messages, compares to the OSCInjectors, feeds data to them as needed.
-		
-			if(args.Message.Data.Count <1)return;
-			if(!( args.Message.Data[0]  is  System.Single))return;
-
-			float value = (float)args.Message.Data[0] ;
-
-			foreach (OSCInjector inject in injectorList) 
+			foreach (UniOSCInjector inject in injectorList) 
 			{
 				if (String.Equals (args.Address, inject.Address)) {
-					if(inject.On)
+									if(inject.On)
 					{
-						inject.Value = value;
+						inject.Value = _data;
 					}
 					//Debug to check working
 					//Debug.Log("Address: " + inject.Address + " Value: " + inject.Value);
 					}
 			}
 
-
 		}
 
+		private string _GetAddressFromOscPacket(UniOSCEventArgs args){
+			return (args.Packet is OscMessage) ? ((OscMessage)args.Packet).Address : ((OscBundle)args.Packet).Address ;
+		}
 
-	}
+	#endregion
 
+
+		
 }

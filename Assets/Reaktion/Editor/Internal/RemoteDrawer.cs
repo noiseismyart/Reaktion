@@ -54,9 +54,8 @@ class RemoteDrawer : PropertyDrawer
 
 		if (control == Remote.Control.OSCValue)
 			return 6;
-
-
-        // Expand if it's enabled.
+		
+		// Expand if it's enabled.
         return control > 0 ? 3 : 1;
     }
 

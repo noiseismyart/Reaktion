@@ -56,7 +56,6 @@ public class ReaktorEditor : Editor
     {
         // Audio input settings.
         propInjector         = serializedObject.FindProperty("injector");
-		propOSCInputAudio    = serializedObject.FindProperty("useOSCInput");
         propAudioCurve       = serializedObject.FindProperty("audioCurve");
 
         // Remote controls.
